@@ -14,7 +14,6 @@ export default function Table() {
 
     getPlanets();
   }, []);
-  console.log(filters[0].filterByName);
   return (
     <table>
       <tr>
