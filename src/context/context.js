@@ -3,8 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 
 export const FiltersContext = createContext();
 
-export default function FiltersProvider(props) {
-  const { children } = props;
+export default function FiltersProvider({ children }) {
   const [filters, setFilters] = useState({
     filterByName: {
       name: '',
