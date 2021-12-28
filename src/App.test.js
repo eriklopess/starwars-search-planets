@@ -84,7 +84,7 @@ describe('1 - Faça uma requisição para o endpoint `/planets` da API de Star W
   });
 });
 
-describe.only('2 - Filtre a tabela através de um texto, inserido num *campo de texto*, exibindo somente os planetas cujos nomes incluam o texto digitado', () => {
+describe('2 - Filtre a tabela através de um texto, inserido num *campo de texto*, exibindo somente os planetas cujos nomes incluam o texto digitado', () => {
   beforeAll(mockFetch);
   beforeEach(cleanup);
 
@@ -263,7 +263,7 @@ describe('3 - Crie um filtro para valores numéricos', () => {
     fireEvent.click(await screen.findByTestId(BUTTON_FILTER_SELECTOR));
 
     expect(await screen.findAllByRole(ROW_ROLE_SELECTOR)).toHaveLength(8);
-  });
+  })
 
   it('Filtre utilizando a comparação "igual a"', async () => {
     await act(async () => {

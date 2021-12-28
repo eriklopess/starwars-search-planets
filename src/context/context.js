@@ -8,6 +8,7 @@ export default function FiltersProvider({ children }) {
     filterByName: {
       name: '',
     },
+    filterByNumericValues: [],
   });
   return (
     <FiltersContext.Provider

@@ -14,6 +14,24 @@ export default function Table() {
 
     getPlanets();
   }, []);
+  const { filterByNumericValues } = filters;
+  const filterPlanets = (filter, arr) => {
+    if (!filter) throw new Error('Adicione o filter');
+    const { column, comparison, value } = filter;
+
+    if (comparison === 'maior que') {
+      return arr.filter((planet) => Number(planet[column]) > value);
+    }
+    if (comparison === 'menor que') {
+      return arr.filter((planet) => planet[column] <= value);
+    }
+    if (comparison === 'igual a') {
+      return arr.filter((planet) => planet[column] === value);
+    }
+
+    return arr;
+  };
+
   return (
     <table>
       <tr>
@@ -31,7 +49,7 @@ export default function Table() {
         <th>Edited</th>
         <th>URL</th>
       </tr>
-      { planets.results
+      { filterPlanets(filterByNumericValues, planets.results)
         .filter((planet) => planet.name.toLowerCase().includes(name))
         .map((planet) => (
           <tr key={ planet.name }>
