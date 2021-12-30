@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { useFilters } from '../../../context/context';
 
-const columnList = [
-  'population',
-  'orbital_period',
-  'diameter',
-  'rotation_period',
-  'surface_water',
-];
 const filtersList = ['maior que', 'menor que', 'igual a'];
 
 export default function FiltersByNumbers() {
@@ -16,6 +9,11 @@ export default function FiltersByNumbers() {
     comparison: 'maior que',
     value: 0,
   });
+  const [columnList, setColumnList] = useState(['population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water']);
   const [filters, setFilters] = useFilters();
   const handleChange = ({ target: { name, value } }) => {
     setFilter({
@@ -24,14 +22,10 @@ export default function FiltersByNumbers() {
     });
   };
   const { filterByName } = filters;
-
   const handleClick = () => {
     setFilters({ filterByName,
       filterByNumericValues: { ...filter } });
-    const INDEX_OF_COLUMN = columnList.indexOf(filter.column);
-    const NEGATIVE_ONE = -1;
-    if (INDEX_OF_COLUMN === NEGATIVE_ONE) return;
-    columnList.splice(INDEX_OF_COLUMN, 1);
+    setColumnList(columnList.filter((column) => column !== filter.column));
   };
 
   return (
