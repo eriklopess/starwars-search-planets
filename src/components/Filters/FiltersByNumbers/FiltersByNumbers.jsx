@@ -28,6 +28,10 @@ export default function FiltersByNumbers() {
   const handleClick = () => {
     setFilters({ filterByName,
       filterByNumericValues: { ...filter } });
+    const INDEX_OF_COLUMN = columnList.indexOf(filter.column);
+    const NEGATIVE_ONE = -1;
+    if (INDEX_OF_COLUMN === NEGATIVE_ONE) return;
+    columnList.splice(INDEX_OF_COLUMN, 1);
   };
 
   return (
